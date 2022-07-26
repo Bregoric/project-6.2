@@ -49,6 +49,7 @@ console.log('links:', links)
         optCloudClassPrefix = 'tag-size-'
 
     function generateTitleLinks(customSelector = '') {
+
         const titleList = document.querySelector(optTitleListSelector)
         titleList.innerHTML = ''
         const articles = document.querySelectorAll(optArticleSelector + customSelector)
@@ -61,14 +62,16 @@ console.log('links:', links)
         }
         titleList.innerHTML = html
             //titleList.innerHTML = titleList.innerHTML + linkHTML;
+        const links = document.querySelectorAll('.titles a')
+        for (let link of links) {
+            link.addEventListener('click', titleClickHandler)
+
+        }
+
+
+
     }
     generateTitleLinks()
-
-    const links = document.querySelectorAll('.titles a')
-    for (let link of links) {
-        link.addEventListener('click', titleClickHandler)
-    }
-
 
     function calculateTagsParams(tags) {
         const params = {
